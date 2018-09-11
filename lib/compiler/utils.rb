@@ -83,6 +83,7 @@ class Compiler
 
     def chdir(path)
       STDERR.puts "-> cd #{path}" unless @options[:quiet]
+      mkdir_p(path) unless File.exist?(path)
       Dir.chdir(path) { yield }
       STDERR.puts "-> cd #{Dir.pwd}" unless @options[:quiet]
     end
